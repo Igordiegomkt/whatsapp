@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecionando para o WhatsApp...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
+      margin: 0;
+    }
+    h1 {
+      font-size: 18px;
+      text-align: center;
+    }
+    .spinner {
+      border: 5px solid #4F4F4F;
+      border-top: 5px solid #00FF00;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-top: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+
+  <!-- Google Tag Manager - PARTE 1: O primeiro script na <head> -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MT6B5TBD');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Script UTMify para UTMs (já existente) -->
+  <script
+    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+    data-utmify-prevent-xcod-sck
+    data-utmify-prevent-subids
+    async
+    defer
+  ></script>
+  <!-- Fim do Script UTMify para UTMs -->
+
+  <!-- NOVO Script do Pixel UTMify: Adicionado aqui, após o GTM e UTMs -->
+  <script>
+    window.pixelId = "68e19e32a255808f0ad6f844";
+    var a = document.createElement("script");
+    a.setAttribute("async", "");
+    a.setAttribute("defer", "");
+    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(a);
+  </script>
+  <!-- Fim do NOVO Script do Pixel UTMify -->
+
+  <script>
+    window.onload = function() {
+      // Captura parâmetros da URL (para rastreamento)
+      const params = new URLSearchParams(window.location.search);
+      const queryString = params.toString();
+
+      // Número de telefone e mensagem pré-preenchida para o WhatsApp
+      const phoneNumber = "556281564712"; // Substitua pelo seu número
+      const message = encodeURIComponent("me manda os conteudo."); // Mensagem padrão
+
+      // Constrói a URL do WhatsApp
+      let whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
+      // Se houver parâmetros UTMify ou outros na URL, adicione-os à URL do WhatsApp para rastreamento
+      if (queryString) {
+        whatsappUrl += `&${queryString}`; // Adiciona os parâmetros após a mensagem
+      }
+
+      // Redireciona para o WhatsApp
+      window.location.href = whatsappUrl;
+
+      // Opcional: Você pode adicionar um pequeno delay antes do redirecionamento
+      // para garantir que os scripts de rastreamento tenham tempo de carregar,
+      // embora window.onload já ajude com isso.
+      // setTimeout(() => {
+      //   window.location.href = whatsappUrl;
+      // }, 1000); // Redireciona após 1 segundo
+    }
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) - PARTE 2 -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MT6B5TBD"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <h1>Redirecionando para o WhatsApp, aguarde...</h1>
+  <div class="spinner"></div>
+</body>
+</html>
